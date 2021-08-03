@@ -17,6 +17,28 @@ RSpec.describe "All subscriptions for a customer" do
       subscriptions = JSON.parse(response.body, symbolize_names: true)
 
       expect(subscriptions).to be_a(Hash)
+      expect(subscriptions).to have_key(:data)
+      expect(subscriptions[:data].count).to eq(3)
+
+      subscriptions[:data].each do |subscription|
+        expect(subscription).to have_key(:id)
+        expect(subscription[:id]).to be_a(String)
+
+        expect(subscription).to have_key(:type)
+        expect(subscription[:type]).to be_a(String)
+
+        expect(subscription).to have_key(:attributes)
+        expect(subscription[:attributes]).to be_a(Hash)
+
+        expect(subscription[:attributes]).to have_key(:title)
+        expect(subscription[:attributes][:title]).to be_a(String)
+        expect(subscription[:attributes]).to have_key(:price)
+        expect(subscription[:attributes][:price]).to be_a(String)
+        expect(subscription[:attributes]).to have_key(:status)
+        expect(subscription[:attributes][:status]).to be_a(String)
+        expect(subscription[:attributes]).to have_key(:frequency)
+        expect(subscription[:attributes][:frequency]).to be_a(String)
+      end
     end
   end
 end
