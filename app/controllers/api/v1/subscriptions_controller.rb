@@ -3,4 +3,15 @@ class Api::V1::SubscriptionsController < ApplicationController
     subscriptions = Subscription.where(customer_id: params[:id])
     render json: SubscriptionSerializer.new(subscriptions)
   end
+
+  def update
+    subscription = Subscription.update(params[:id], subscription_params)
+    render json: SubscriptionSerializer.new(subscription)
+  end
+
+  private
+
+  def subscription_params
+    params.require(:subscription).permit(:title, :price, :status, :frequency)
+  end
 end
