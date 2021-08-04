@@ -9,9 +9,13 @@ class Api::V1::SubscriptionsController < ApplicationController
     render json: SubscriptionSerializer.new(subscription)
   end
 
+  def create
+    render json: Subscription.create(subscription_params)
+  end
+
   private
 
   def subscription_params
-    params.require(:subscription).permit(:title, :price, :status, :frequency)
+    params.require(:subscription).permit(:title, :price, :status, :frequency, :tea_id, :customer_id)
   end
 end
