@@ -38,7 +38,6 @@ RSpec.describe "Update a Customer's Subscription Endpoint" do
       expect(response.status).to eq(404)
 
       no_subscription = JSON.parse(response.body, symbolize_names: true)
-      require "pry"; binding.pry
       expect(no_subscription).to have_key(:errors)
       expect(no_subscription).to_not have_key(:data)
       expect(no_subscription[:errors][0]).to have_key(:message)
