@@ -10,7 +10,8 @@ class Api::V1::SubscriptionsController < ApplicationController
   end
 
   def create
-    render json: Subscription.create(subscription_params)
+    subscription = Subscription.create!(subscription_params)
+    render json: SubscriptionSerializer.new(subscription)
   end
 
   private
