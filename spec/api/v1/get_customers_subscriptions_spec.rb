@@ -43,4 +43,21 @@ RSpec.describe "All subscriptions for a customer" do
       end
     end
   end
+
+  describe "sad path" do
+    it "returns an error message if customer doesn't exist" do
+
+      get "/api/v1/customers/999/subscriptions"
+      
+      expect(response.status).to eq(404)
+
+      no_subscription = JSON.parse(response.body, symbolize_names: true)
+      expect(no_subscription).to have_key(:errors)
+      expect(no_subscription).to_not have_key(:data)
+      expect(no_subscription[:errors][0]).to have_key(:message)
+      expect(no_subscription[:errors][0][:message]).to be_a(String)
+      expect(no_subscription[:errors][0]).to have_key(:code)
+      expect(no_subscription[:errors][0][:code]).to be_a(Integer)
+    end
+  end
 end
