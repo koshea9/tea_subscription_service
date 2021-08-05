@@ -8,6 +8,12 @@
 
 ![Tea_Subscription](https://user-images.githubusercontent.com/24997456/128367696-ce2ea8ab-91f8-4b15-9619-6842ec96bf9d.png)
 
+## Development setup
+
+1. Fork and Clone the repo
+2. Install gem packages: `bundle install`
+3. Setup the database: `rails db:{create, migrate, seed}`
+4. Run test suite with `bundle exec rspec`
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/15482583-9dc40f00-6990-4c1e-9c67-e3fccaffb3ad?action=collection%2Ffork&collection-url=entityId%3D15482583-9dc40f00-6990-4c1e-9c67-e3fccaffb3ad%26entityType%3Dcollection%26workspaceId%3Ddb127735-43ee-4855-a194-4ccf5766f947)
 
@@ -69,7 +75,8 @@ Example Request:
   "frequency": "monthly",
   "tea_id": 12,
   "customer_id": 40
-}```
+}
+```
 
 Example Response:
    
