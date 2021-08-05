@@ -1,5 +1,6 @@
 # Tea Subscription Service Description
-> A back end API for a fictious Tea Subscription application
+> MVP for a back end API serving a fictious Tea Subscription application
+
 
 ## Versions
 - Ruby 2.5.3
